@@ -10,6 +10,11 @@
 <h1 class="text-center">Contact Us</h1>
 
 <form method="post" action="/contact">
+{% if error %}
+<div class="alert alert-danger" role="alert">
+  Please Enter The Value
+</div>
+{% endif %}
 {% csrf_token %} 
   <div class="mb-3">
     <label for="name" class="form-label">Name</label>

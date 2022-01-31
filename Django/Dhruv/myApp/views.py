@@ -24,6 +24,9 @@ def services(request):
 
 def contact(request):
     if request.method == "POST":
+        if request.POST.get("name phone") == "":
+            return render(request, 'contact.html', {'error': True})
+
         name = request.POST.get('name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
