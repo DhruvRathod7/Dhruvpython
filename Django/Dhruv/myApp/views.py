@@ -24,7 +24,7 @@ def services(request):
 
 def contact(request):
     if request.method == "POST":
-        if request.POST.get("name phone") == "":
+        if request.POST.get('name') == "":
             return render(request, 'contact.html', {'error': True})
 
         name = request.POST.get('name')
