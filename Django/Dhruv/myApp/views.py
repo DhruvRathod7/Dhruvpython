@@ -1,17 +1,48 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
+from django.contrib.auth.models import User
+from django.contrib.auth import logout, authenticate, login
 from datetime import datetime
 from myApp.models import Contact
 from django.contrib import messages
 
+
 # Create your views here.
+# password for rathod_dhruv user dmr@#123
 
 
 def index(request):
+    # print(request.user)
     context = {
         'variable': "this is sent"
     }
-    return render(request, 'index.html', context)
+    if request.user.is_anonymous:
+        return redirect("/login")
+    return render(request, 'index.html', context)  # in this field
     # return HttpResponse("this is home page")
+
+
+def loginUser(request):
+    if request.method == "POST":
+        username = request.POST.get('user name')
+        password = request.POST.get('password')
+        # print(username, password)
+        # check if user has entered correct credentials
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            # A backend authenticated the credentials
+            login(request, user)
+            return redirect("/")
+
+        else:
+            # No backend authenticated the credentials
+            return render(request, 'login.html')
+
+    return render(request, 'login.html')
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect("/login")
 
 
 def about(request):
