@@ -35,9 +35,10 @@ def loginUser(request):
 
         else:
             # No backend authenticated the credentials
-            return render(request, 'login.html')
+            # change apply login.html to base
+            return render(request, 'index.html')
 
-    return render(request, 'login.html')
+    return render(request, 'index.html')  # change apply login.html to base
 
 
 def logoutUser(request):
