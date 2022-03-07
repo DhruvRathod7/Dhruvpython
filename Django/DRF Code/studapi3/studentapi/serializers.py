@@ -19,7 +19,7 @@ class StudentSerializer(serializers.Serializer):
 
 # Field Lavel Validation
 
-    def validate(self, value):
+    def validate_roll(self, value):
         if value >= 200:
             raise serializers.ValidationError('Seat Full')
         return value
