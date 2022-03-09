@@ -39,17 +39,29 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/contact">Contact us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Sign in</a>
-              </li>
-             
+              </li>             
             </ul>
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success mx-2" type="submit">Search</button>
             </form>
             
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Welcome {{request.user}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            </ul>
+             
+            {% else %}
             <!-- Button trigger Login modal -->
             <button type="button" class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#loginmodal">
               Login
@@ -58,8 +70,8 @@
             <!-- Button trigger SignUp modal -->
             <button type="button" class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#signupmodal">
               SignUp
-            </button>
-
+            </button>           
+            {% endif%}
             
           </div>
         </div>
@@ -86,33 +98,38 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+      <form action="/signup" method="post">
+        {% csrf_token %}
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control" id="username" name="username" placeholder="choose a unique username">
+          <input type="text" class="form-control" id="username" name="username" 
+          placeholder="choose a unique username" required>
         </div>
 
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="email">
+          <input type="email" class="form-control" id="email" name="email" 
+          placeholder="email" required>
         </div>
 
         <div class="mb-3">
           <label for="pass1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Enter your password">
+          <input type="password" class="form-control" id="pass1" name="pass1" 
+          placeholder="Enter your password" required>
         </div>
 
         <div class="mb-3">
           <label for="pass2" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Enter your password">
+          <input type="password" class="form-control" id="pass2" name="pass2" 
+          placeholder="Enter your password" required>
         </div>
 
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
+        
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit</button>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
       </div>
     </div>
   </div>
@@ -127,17 +144,23 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+      <form action="/login" method="post">
+         {% csrf_token %}  
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control" id="loginusername" name="username" placeholder="choose a unique username">
+          <input type="text" class="form-control" id="loginusername" name="loginusername" 
+          placeholder="choose a unique username" required>
         </div>
         <div class="mb-3">
           <label for="pass" class="form-label">Password</label>
-          <input type="password" class="form-control" id="pass" name="pass1" placeholder="Enter your password">
+          <input type="password" class="form-control" id="loginpassword" name="loginpassword" 
+          placeholder="Enter your password" required>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit</button>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
       </div>
     </div>
   </div>

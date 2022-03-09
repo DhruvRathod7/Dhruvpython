@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout, authenticate, login
@@ -15,35 +16,35 @@ def index(request):
     context = {
         'variable': "this is sent"
     }
-    if request.user.is_anonymous:
-        return redirect("/login")
+    # if request.user.is_anonymous:
+    #     return redirect("/login")
     return render(request, 'index.html', context)  # in this field
     # return HttpResponse("this is home page")
 
 
-def loginUser(request):
-    if request.method == "POST":
-        username = request.POST.get('user name')
-        password = request.POST.get('password')
-        # print(username, password)
-        # check if user has entered correct credentials
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            # A backend authenticated the credentials
-            login(request, user)
-            return redirect("/")
+# def loginUser(request):
+#     if request.method == "POST":
+#         username = request.POST.get('user name')
+#         password = request.POST.get('password')
+#         # print(username, password)
+#         # check if user has entered correct credentials
+#         user = authenticate(username=username, password=password)
+#         if user is not None:
+#             # A backend authenticated the credentials
+#             login(request, user)
+#             return redirect("/")
 
-        else:
-            # No backend authenticated the credentials
-            # change apply login.html to base
-            return render(request, 'index.html')
+#         else:
+#             # No backend authenticated the credentials
+#             # change apply login.html to base
+#             return render(request, 'index.html')
 
-    return render(request, 'index.html')  # change apply login.html to base
+#     return render(request, 'index.html')  # change apply login.html to base
 
 
-def logoutUser(request):
-    logout(request)
-    return redirect("/login")
+# def logoutUser(request):
+#     logout(request)
+#     return redirect("/login")
 
 
 def about(request):
@@ -68,3 +69,61 @@ def contact(request):
         contact.save()
         messages.success(request, 'Your message has send successfully!')
     return render(request, 'contact.html')
+
+def handleSignup(request):
+    if request.method == 'POST':
+        # get the post parameters
+        username = request.POST['username']
+        email = request.POST['email']
+        pass1 = request.POST['pass1']
+        pass2 = request.POST['pass2']
+
+        # Check for errorneous inputs
+        if len(username) > 10:
+            messages.error(request, "Username must be under 10 characters")
+            return redirect('home')
+        if not username.isalnum():
+            messages.error(request, "Username should only contain letter and numbers")
+            return redirect('home')
+        if pass1 != pass2:
+            messages.error(request, "Passwords do not match")
+            return redirect('home')
+
+        # Create the user
+        myuser = User.objects.create_user(username, email, pass1)
+        myuser.save()
+        messages.success(request,"your acoount has been created succesfully")
+        return redirect('home')
+
+
+    else:
+        return HttpResponse('404 - Not Found')
+
+def handleLogin(request):
+    if request.method == 'POST':
+        # get the post parameters
+        loginusername = request.POST['loginusername']
+        loginpassword = request.POST['loginpassword']
+
+        user = authenticate(username=loginusername, password=loginpassword)
+
+        if user is not None:
+            login(request,user)
+            messages.success(request, "Successfully Logged In")
+            return redirect('home')
+        else:
+            messages.error(request, "Invalid Credentials, Please Try Again")
+            return redirect('home')
+        
+    return HttpResponse('handleLogin')
+
+def handleLogout(request):
+    logout(request)
+    messages.success(request, "Successfully Logged out")
+    return redirect('home')
+        
+        
+    
+
+
+
