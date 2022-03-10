@@ -5,7 +5,146 @@
 {% block body %}
 
 <div class="col-12">
-    <img src="http://source.unsplash.com/1200x400/?motorbike"/>
+  
+
+  <div class="container">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="home" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="services" class="nav-link px-2 text-muted">Services</a></li>
+        <li class="nav-item"><a href="home" class="nav-link px-2 text-muted">Table Booking</a></li>
+        <li class="nav-item"><a href="about" class="nav-link px-2 text-muted">About Us</a></li>
+        <li class="nav-item"><a href="contact" class="nav-link px-2 text-muted">Contact Us</a></li>
+      </ul>
+      <p class="text-center text-muted">&copy; 2018 Magnum IceCream, Inc</p>
+    </footer>
+  </div>
+
+
+    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+      
+  
+    <div class="row g-3">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Shopping Cart</span>
+          <span class="badge bg-secondary rounded-pill">3</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">First item</h6>
+              <small class="text-muted">f disc</small>
+            </div>
+            <span class="text-muted">$12</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Second item</h6>
+              <small class="text-muted">s disc</small>
+            </div>
+            <span class="text-muted">$8</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Third disc</h6>
+              <small class="text-muted">t disc</small>
+            </div>
+            <span class="text-muted">$5</span>
+          </li>
+          <!-- <li class="list-group-item d-flex justify-content-between bg-light">
+            <div class="text-success">
+              <h6 class="my-0">رمز ترويجي</h6>
+              <small>EXAMPLECODE</small>
+            </div>
+            <span class="text-success">-$5</span>
+          </li> -->
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total </span>
+            <strong>$25</strong>
+          </li>
+        </ul>
+
+        <!-- <form class="card p-2">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="رمز ترويجي">
+            <button type="submit" class="btn btn-secondary">تحقق</button>
+          </div>
+        </form> -->
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Billing Address</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">First Name
+              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+            invalid first name
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+              invalid last name
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="username" class="form-label">User Name</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" id="UserName" placeholder="User Name" required>
+              <div class="invalid-feedback">
+             invalid user name
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email Address<span class="text-muted"></span></label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              <div class="invalid-feedback">
+                invalid email id
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="Address" required>
+              <div class="invalid-feedback">
+          we dont reach you
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address2" class="form-label">Address2<span class="text-muted">(optional)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="Address2">
+            </div>
+
+            
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Pay</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; Magnum IceCream 2018-2022 </p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Technical support </a></li>
+      <li class="list-inline-item"><a href="#">Upi id</a></li>
+      <li class="list-inline-item"><a href="#">Privacy & Policy</a></li>
+    </ul>
+  </footer>
+</div>
+
+
+
+    <!-- <img src="http://source.unsplash.com/1200x400/?motorbike"/> -->
   </div>
 
 {% endblock body %}

@@ -11,22 +11,24 @@
     <title>{% block title %}{% endblock title %}| Dhruv IceCream Point</title>
   </head>
   <body>
+    <!-- <nav class="navbar navbar-light bg-dark"> -->
     <nav class="navbar navbar-expand-lg navbar-blue bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Dhruv IceCream Point</a>
+          <a class="navbar-brand" href="#"><img itemprop="image" class="" alt="Magnum logo" src="https://www.magnumicecream.com/content/dam/unilever/magnum/united_states_of_america/logo/magnum-logo-2184163-png.png.ulenscale.100x35.png"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                <!-- <p class="text-warning" aria-current="page" href="{% url 'home' %}">Home</p> -->
+                <a class="navbar-brand" aria-current="page" href="{% url 'home' %}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About us</a>                            
+                <a class="navbar-brand" href="{% url 'about' %}">About us</a>                            
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="/services" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="navbar-brand dropdown-toggle" href="/services" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Services
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -38,7 +40,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/contact">Contact us</a>
+                <a class="navbar-brand" href="/contact">Contact us</a>
               </li>             
             </ul>
             <form class="d-flex">
