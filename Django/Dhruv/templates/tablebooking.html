@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}TableBooking{% endblock title %}
+
+{% block body %}
+
+<!-- online table Booking -->
+<div class="container mb-3 py-4">
+    <h1 class="text-center" id="tablebookinglTitle">Table Booking</h1>    
+    <form method="post" action="/tablebooking">
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+      Please Enter The Value
+    </div>
+    {% endif %}
+    {% csrf_token %} 
+      <div class="mb-3">
+        <label for="username" class="form-label">User Name</label>
+        <input type="text" class="form-control" id="username" name="username"
+        placeholder="Enter your User Name" required>
+      </div>
+    
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email"
+        placeholder="Enter your Email" required>
+      </div>
+    
+      <div class="mb-3">
+        <label for="phone" class="form-label">Mobile no</label>
+        <input type="phone" class="form-control" id="phone" name="phone" 
+        placeholder="Enter your Mobile no" required>
+      </div>
+      
+      <div class="mb-3">
+        <label><i class="glyphicon glyphicon-calendar"></i> Date :</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+      </div>
+      <div class="mb-3">
+        <label><i class="glyphicon glyphicon-user"></i> No.of People :</label>
+        <select class="form-control" id="noofpeople" name="noofpeople" required>
+          <option>1 Person</option>
+          <option>2 People</option>
+          <option>3 People</option>
+          <option>4 People</option>
+          <option>5 People</option>
+          <option>More</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="glyphicon glyphicon-time"> Time :</label>
+        <input type="time" class="form-control" id="time" name="time" required>
+      </div>
+      <div class="clearfix"> </div>
+      <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+    </form>
+  
+    <!-- Billing Address Footer -->
+  
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; Magnum IceCream 2018-2022 </p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Technical support </a></li>
+        <li class="list-inline-item"><a href="#">Upi id</a></li>
+        <li class="list-inline-item"><a href="#">Privacy & Policy</a></li>
+      </ul>
+    </footer>
+    
+    </div>
+
+{% endblock body %}

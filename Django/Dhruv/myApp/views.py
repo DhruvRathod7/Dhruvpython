@@ -3,7 +3,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout, authenticate, login
 from datetime import datetime
-from myApp.models import Contact
+from myApp.models import Contact, TableBooking
 from django.contrib import messages
 
 
@@ -115,12 +115,31 @@ def handleLogin(request):
             messages.error(request, "Invalid Credentials, Please Try Again")
             return redirect('home')
         
-    return HttpResponse('handleLogin')
+    return HttpResponse('404 - Not Found')
 
 def handleLogout(request):
     logout(request)
     messages.success(request, "Successfully Logged out")
     return redirect('home')
+
+def tablebooking(request):
+    if request.method == "POST":
+        
+        # get the post parameters
+        username = request.POST['username']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        date = request.POST['date']
+        noofpeople = request.POST['noofpeople']
+        time = request.POST['time']
+        tablebooking = TableBooking(username=username, email=email, phone=phone,
+                          date=date, noofpeople=noofpeople, time=time)
+        tablebooking.save()
+        messages.success(request, 'Your Table Booked successfully!')
+    
+    else:
+        return HttpResponse('404 - Not Found')
+
         
         
     
