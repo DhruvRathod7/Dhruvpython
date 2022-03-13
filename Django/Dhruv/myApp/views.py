@@ -140,6 +140,16 @@ def tablebooking(request):
     else:
         return HttpResponse('404 - Not Found')
 
+
+def icecreams(request):
+    return render(request, 'icecreams.html')
+
+def colddrinks(request):
+    return render(request, 'colddrinks.html')
+
+def familypack(request):
+    return render(request, 'familypack.html')
+
         
         
     

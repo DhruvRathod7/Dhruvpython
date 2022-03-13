@@ -13,7 +13,10 @@ urlpatterns = [
     path("signup", views.handleSignup, name='handleSignup'),
     path("login", views.handleLogin, name='handleLogin'),
     path("logout", views.handleLogout, name='handleLogout'),
-    path("tablebooking",views.tablebooking, name="tablebooking")
+    path("tablebooking",views.tablebooking, name="tablebooking"),
+    path("icecreams",views.icecreams, name="icecreams"),
+    path("colddrinks",views.colddrinks, name="colddrinks"),
+    path("familypack",views.familypack, name="familypack")
 
 
 ]
