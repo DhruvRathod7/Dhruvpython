@@ -136,9 +136,12 @@ def tablebooking(request):
                           date=date, noofpeople=noofpeople, time=time)
         tablebooking.save()
         messages.success(request, 'Your Table Booked successfully!')
-    
-    else:
-        return HttpResponse('404 - Not Found')
+               
+    else:  
+      return render(request, 'tablebooking.html')
+    return HttpResponse('tablebooking')
+   
+        
 
 
 def icecreams(request):
