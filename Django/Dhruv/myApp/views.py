@@ -1,4 +1,5 @@
 import re
+from sre_parse import SPECIAL_CHARS
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout, authenticate, login
@@ -77,7 +78,8 @@ def handleSignup(request):
         email = request.POST['email']
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
-
+        
+        
         # Check for errorneous inputs
         if len(username) > 10:
             messages.error(request, "Username must be under 10 characters")
@@ -87,6 +89,9 @@ def handleSignup(request):
             return redirect('home')
         if pass1 != pass2:
             messages.error(request, "Passwords do not match")
+            return redirect('home')
+        if SPECIAL_CHARS in username():
+            messages.error(request, "please remove special character from username")
             return redirect('home')
 
         # Create the user
